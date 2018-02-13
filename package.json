@@ -1,0 +1,33 @@
+{
+  "name": "payroll-panda-example-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "create": "webpack",
+    "start": "webpack-dev-server --open"
+  },
+  "babel": {
+    "presets": ["env"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cassidypignatello/payroll-panda-example-app.git"
+  },
+  "author": "Cassidy Pignatello",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cassidypignatello/payroll-panda-example-app/issues"
+  },
+  "homepage": "https://github.com/cassidypignatello/payroll-panda-example-app#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.9",
+    "html-webpack-plugin": "^2.30.1",
+    "style-loader": "^0.20.1",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  }
+}
