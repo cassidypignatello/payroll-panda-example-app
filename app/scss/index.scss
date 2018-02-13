@@ -1,3 +1,7 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+$secondary-color: #349f03;
+
 * {
   box-sizing: border-box;
 }
@@ -5,15 +9,15 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Helvetica";
+  font-family: $font-stack;
   font-size: 16px;
 }
 
 hr {
-  border: .5px solid black;
+  border: .5px solid $primary-color;
   height: 1px;
-  color: #333;
-  background-color: #333;
+  color: $primary-color;
+  background-color: $primary-color;
 }
 
 .container {
@@ -26,19 +30,18 @@ hr {
 
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   flex: 1;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-}
-
-.nav-links p {
-  font-size: 14px;
-  padding: 0 10px;
+  p {
+    font-size: 14px;
+    padding: 0 10px;
+  }
 }
 
 .nav-title {
@@ -48,10 +51,6 @@ hr {
   width: 135px;
 }
 
-.fa-bars {
-  color: #349f03;
-}
-
-.fa-user {
-  color: #349f03;
+.fa-bars, .fa-user {
+  color: $secondary-color;
 }
