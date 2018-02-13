@@ -1,3 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: green;
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica";
+  font-size: 16px;
+}
+
+hr {
+    border: .5px solid black;
+    height: 1px;
+    color: #333;
+    background-color: #333;
+}
+
+.container {
+  position: relative;
+  max-width: 1150px;
+  min-width: 280px;
+  margin: 0 auto;
+  margin-bottom: -10px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.nav-links p {
+  font-size: 14px;
+  padding: 0 10px;
 }
