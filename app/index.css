@@ -10,10 +10,10 @@ body {
 }
 
 hr {
-    border: .5px solid black;
-    height: 1px;
-    color: #333;
-    background-color: #333;
+  border: .5px solid black;
+  height: 1px;
+  color: #333;
+  background-color: #333;
 }
 
 .container {
@@ -31,7 +31,27 @@ hr {
   flex: 1;
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
 .nav-links p {
   font-size: 14px;
   padding: 0 10px;
+}
+
+.nav-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 135px;
+}
+
+.fa-bars {
+  color: #349f03;
+}
+
+.fa-user {
+  color: #349f03;
 }
