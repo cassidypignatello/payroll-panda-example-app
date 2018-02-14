@@ -143,3 +143,32 @@ ul.breadcrumbs {
   color: $secondary-color;
   margin-left: auto;
 }
+
+.accordion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 60px;
+  height: 50px;
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  transition: 0.4s;
+  font-size: 10px;
+  strong {
+    font-size: 14px;
+  }
+}
+
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 35px;
+  color: $secondary-color;
+}
