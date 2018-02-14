@@ -42,7 +42,7 @@ hr {
 .fa-bars, .fa-user, .fa-home, .fa-recycle {
   color: #349f03; }
 
-.fa-puzzle-piece, .fa-futbol, .fa-bicycle {
+.fa-puzzle-piece, .fa-futbol-o, .fa-bicycle, .fa-life-ring {
   color: #999; }
 
 ul.breadcrumbs {
@@ -134,3 +134,17 @@ ul.breadcrumbs {
   justify-content: space-between;
   width: 35px;
   color: #349f03; }
+
+.panel {
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  color: #666;
+  padding: 0 18px;
+  height: 206px;
+  line-height: 1.6; }
+  .panel p {
+    font-size: 14px; }
+
+.fa-life-ring {
+  margin: 18px 18px 18px 0;
+  float: left; }
