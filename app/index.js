@@ -6,16 +6,11 @@ const App = {
   },
   addListeners: function() {
     const helpButton = document.querySelector('.accordion');
+    const panel = helpButton.nextElementSibling;
     helpButton.addEventListener('click', function() {
       this.classList.toggle('active');
-      const panel = this.nextElementSibling;
-      if (panel.style.display === 'block' && panel.style.maxHeight) {
-        panel.style.display = 'none';
-        panel.style.borderTop = '1px solid #e3e3e3';
-        this.style.borderBottom = '1px solid #e3e3e3';
-        this.style.borderBottomLeftRadius = '4px';
-        this.style.borderBottomRightRadius = '4px';
-        panel.style.maxHeight = null;
+      if (panel.style.display === 'block') {
+        styleHelpbox.call(this, 'none', '1px solid #e3e3e3', '1px solid #e3e3e3', '4px', '4px', '4px', '4px', null);
         handleCloseButton('open', 'fa-long-arrow-up', 'fa-long-arrow-down');
       } else {
         panel.style.display = 'block';
@@ -29,6 +24,18 @@ const App = {
         handleCloseButton('close', 'fa-long-arrow-down', 'fa-long-arrow-up');
       }
     });
+    const styleHelpbox = function(display, borderTop, borderBottom, borderBottomLeftRadius, borderBottomRightRadius, borderTopLeftRadius, borderTopRightRadius, maxHeight) {
+      panel.style.display = display;
+      panel.style.borderTop = borderTop;
+      this.style.borderBottom = borderBottom;
+      this.style.borderBottomLeftRadius = borderBottomLeftRadius;
+      this.style.borderBottomRightRadius = borderBottomRightRadius;
+      panel.style.borderTopLeftRadius = borderTopLeftRadius;
+      panel.style.borderTopRightRadius = borderTopRightRadius;
+      panel.style.maxHeight = maxHeight;
+      console.log(arguments);
+    }
+
     const handleCloseButton = (text, addClass, removeClass) => {
       const closeButtonText = document.querySelector('.close-button p');
       const closeButtonIcon = document.querySelector('.close-button i');
