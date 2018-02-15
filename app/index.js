@@ -82,44 +82,8 @@ const App = {
         today = `${date}/${month}/${year}`;
         return `${today} ${time}`;
       }
-      const addRow = () => {
-        const table = document.querySelector('.table');
-        const newRow = document.createElement('div');
-        newRow.classList.add('tr');
-        const newCells = [
-          this.createCell(fullName),
-          this.createCell(email),
-          this.createCell(city),
-          this.createCell(group.charAt(0).toUpperCase() + group.slice(1)),
-          this.createCell(days.join(', ')),
-          this.createCell(getDate()),
-          this.createCell('icon')
-        ];
-        
-        const docFrag = document.createDocumentFragment();
-        for (var i = 0; i < newCells.length; i++) {
-          docFrag.appendChild(newCells[i]);
-        }
-        newRow.appendChild(docFrag);
-        table.appendChild(newRow);
-        const tableRows = document.querySelectorAll('div ~ .tr');
-        tableRows.forEach(function(row) {
-          row.addEventListener('mouseenter', function() {
-            const deleteIcon = this.lastChild.firstChild;
-            deleteIcon.style.display = 'block';
-            deleteIcon.addEventListener('click', () => {
-              this.remove();
-            });
-          });
-
-          row.addEventListener('mouseleave', function() {
-            this.lastChild.firstChild.style.display = 'none';
-          });
-        });
-      }
-      addRow();
-      // addRow(fullName, email, city, group);
-      // e.preventDefault();
+      this.addRow(fullName, email, city, group.charAt(0).toUpperCase() + group.slice(1), days.join(', '), getDate(), 'icon');
+      e.preventDefault();
     }.bind(this));
   },
   buildList: function() {
@@ -131,27 +95,9 @@ const App = {
       {name: 'Libby Folfax', email: 'folfax2014@example.com', city: 'City', group: 'Sometimes', days: 'Mon, Tue, Wed', date: '13/08/2018', time: '11:29AM'},
       {name: 'Nick Dean', email: 'nickd@example.com', city: 'City', group: 'Always', days: 'Fri, Sat', date: '13/08/2013', time: '11:29AM'}
     ];
-    const table = document.querySelector('.table');
+
     bikers.forEach(function(biker) {
-      const newRow = document.createElement('div');
-      newRow.classList.add('tr');
-
-      const newCells = [
-        this.createCell(biker.name),
-        this.createCell(biker.email),
-        this.createCell(biker.city),
-        this.createCell(biker.group),
-        this.createCell(biker.days),
-        this.createCell(`${biker.date} ${biker.time}`),
-        this.createCell('icon')
-      ];
-
-      const docFrag = document.createDocumentFragment();
-      for (var i = 0; i < newCells.length; i++) {
-        docFrag.appendChild(newCells[i]);
-      }
-      newRow.appendChild(docFrag);
-      table.appendChild(newRow);
+      this.addRow(biker.name, biker.email, biker.city, biker.group, biker.days, `${biker.date} ${biker.time}`, 'icon');
     }.bind(this));
   },
   createCell: function(text) {
@@ -165,6 +111,41 @@ const App = {
       newCell.appendChild(document.createTextNode(text));
     }
     return newCell;
+  },
+  addRow: function(name, email, city, group, days, date, icon) {
+    const table = document.querySelector('.table');
+    const newRow = document.createElement('div');
+    newRow.classList.add('tr');
+    const newCells = [
+      this.createCell(name),
+      this.createCell(email),
+      this.createCell(city),
+      this.createCell(group),
+      this.createCell(days),
+      this.createCell(date),
+      this.createCell(icon)
+    ];
+
+    const docFrag = document.createDocumentFragment();
+    for (var i = 0; i < newCells.length; i++) {
+      docFrag.appendChild(newCells[i]);
+    }
+    newRow.appendChild(docFrag);
+    table.appendChild(newRow);
+    const tableRows = document.querySelectorAll('div ~ .tr');
+    tableRows.forEach(function(row) {
+      row.addEventListener('mouseenter', function() {
+        const deleteIcon = this.lastChild.firstChild;
+        deleteIcon.style.display = 'block';
+        deleteIcon.addEventListener('click', () => {
+          this.remove();
+        });
+      });
+
+      row.addEventListener('mouseleave', function() {
+        this.lastChild.firstChild.style.display = 'none';
+      });
+    });
   }
 }
 
