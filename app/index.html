@@ -90,6 +90,72 @@
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
-    </div>
+      </div>
+      <div class="container">
+        <div class="form-elements">
+          <h1>User registration</h1>
+          <form class="user-registration">
+            <div class="user-info-left">
+              <label for="fullname">Full name</label>
+              <input type="text" name="fullname" id="fullname">
+              <div class="instructions">
+                <p>Please enter your name.</p>
+              </div>
+              <label for="email">E-mail</label>
+              <input type="email" name="email" id="email">
+              <div class="instructions">
+                <p>Please enter your email address.</p>
+              </div>
+              <div class="row">
+                <label for="city">City</label>
+                <p>optional</p>
+              </div>
+              <input type="text" name="city" id="city">
+              <div class="instructions">
+                <p>Please enter the city you currently live in.</p>
+              </div>
+            </div>
+            <div class="user-info-right">
+              <div class="column">
+                <div>
+                  <label class="group-label" for="group">Ride in group?</label>
+                </div>
+                <div>
+                  <div class="row radio-buttons">
+                    <label id="always" class="radio-container">
+                      <input type="radio" name="group" id="group" value="always">
+                      <span class="radio"></span>
+                    </label>
+                    <label id="sometimes" class="radio-container">
+                      <input type="radio" name="group" id="group" value="sometimes">
+                      <span class="radio"></span>
+                    </label>
+                    <label id="never" class="radio-container">
+                      <input type="radio" name="group" id="group" value="never">
+                      <span class="radio"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div>
+                  <label for="days">Days of the week</label>
+                </div>
+                <div>
+                  <div class="row">
+                    <input type="checkbox" name="sunday" id="days" value="Sun">Sun
+                    <input type="checkbox" name="monday" id="days" value="Mon">Mon
+                    <input type="checkbox" name="tuesday" id="days" value="Tue">Tue
+                    <input type="checkbox" name="wednesday" id="days" value="Wed">Wed
+                    <input type="checkbox" name="thursday" id="days" value="Thu">Thu
+                    <input type="checkbox" name="friday" id="days" value="Fri">Fri
+                    <input type="checkbox" name="saturday" id="days" value="Sat">Sat
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
   </body>
 </html>

@@ -13,6 +13,82 @@ hr {
   color: #333;
   background-color: #333; }
 
+form {
+  display: flex;
+  justify-content: space-between; }
+
+label, input {
+  display: block; }
+  label:focus, input:focus {
+    outline: none; }
+
+label {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px; }
+
+.user-info-left input {
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 2px solid #dbdbdb;
+  border-radius: 4px; }
+  .user-info-left input:focus {
+    border-color: #33a00f; }
+
+.user-info-right input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer; }
+
+.radio-container {
+  display: block;
+  position: relative;
+  width: 120px;
+  font-weight: normal; }
+
+.radio {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  border: 2px solid #dbdbdb;
+  border-radius: 50%;
+  cursor: pointer; }
+  .radio:hover {
+    border-color: #33a00f; }
+  .radio:after {
+    content: "";
+    position: absolute;
+    display: none; }
+
+.container input:checked ~ .radio {
+  border-color: #33a00f; }
+
+#always:after, #sometimes:after, #never:after {
+  position: absolute;
+  top: 15%;
+  left: 29%;
+  color: #717171; }
+
+#always:after {
+  content: "Always"; }
+
+#sometimes:after {
+  content: "Sometimes"; }
+
+#never:after {
+  content: "Never"; }
+
+.container input:checked ~ .radio:after {
+  display: block; }
+
+.container .radio:after {
+  top: 7px;
+  left: 7px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: black; }
+
 .container {
   position: relative;
   max-width: 1150px;
@@ -40,7 +116,7 @@ hr {
   width: 130px; }
 
 .fa-bars, .fa-user, .fa-home, .fa-recycle {
-  color: #349f03; }
+  color: #33a00f; }
 
 .fa-puzzle-piece, .fa-futbol-o, .fa-bicycle, .fa-life-ring {
   color: #999; }
@@ -56,7 +132,7 @@ ul.breadcrumbs {
     display: inline;
     font-size: 12px; }
     ul.breadcrumbs li a {
-      color: #349f03;
+      color: #33a00f;
       text-decoration: none; }
       ul.breadcrumbs li a:hover {
         text-decoration: underline; }
@@ -106,7 +182,7 @@ ul.breadcrumbs {
 
 .reminder {
   width: 122px;
-  color: #349f03;
+  color: #33a00f;
   margin-left: auto; }
 
 .accordion {
@@ -133,7 +209,7 @@ ul.breadcrumbs {
   align-items: center;
   justify-content: space-between;
   width: 35px;
-  color: #349f03; }
+  color: #33a00f; }
 
 .panel {
   border: 1px solid #e3e3e3;
@@ -156,3 +232,48 @@ ul.breadcrumbs {
 
 .active, .accordion:hover {
   background-color: #999; }
+
+.form-elements {
+  margin-top: 100px; }
+  .form-elements h1 {
+    margin-bottom: 30px; }
+
+.user-info-left {
+  display: flex;
+  flex-direction: column;
+  width: 464px; }
+
+.user-info-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 565px; }
+
+.column {
+  display: flex;
+  flex-direction: column; }
+
+.user-info-left .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .user-info-left .row p {
+    margin: 0;
+    color: #aaa;
+    font-size: 12px; }
+
+.row {
+  display: flex;
+  align-items: center; }
+
+.radio-buttons {
+  width: 500px; }
+
+.instructions {
+  display: none;
+  margin: 0;
+  color: #aaa;
+  font-size: 12px; }
+
+.group-label {
+  margin-bottom: 10px; }

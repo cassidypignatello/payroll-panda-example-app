@@ -1,7 +1,9 @@
 $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
-$secondary-color: #349f03;
+$secondary-color: #33a00f;
 $dark-icon-color: #999;
+$form-instruction-text: #aaa;
+$form-controls-text: #717171;
 
 * {
   box-sizing: border-box;
@@ -19,6 +21,103 @@ hr {
   height: 1px;
   color: $primary-color;
   background-color: $primary-color;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+}
+
+label, input {
+  display: block;
+  &:focus {
+    outline: none;
+  }
+}
+
+label {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.user-info-left input {
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 2px solid #dbdbdb;
+  border-radius: 4px;
+  &:focus {
+    border-color: $secondary-color;
+  }
+}
+
+.user-info-right input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-container {
+  display: block;
+  position: relative;
+  width: 120px;
+  font-weight: normal;
+}
+
+.radio {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  border: 2px solid #dbdbdb;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover {
+    border-color: $secondary-color;
+  }
+  &:after {
+      content: "";
+      position: absolute;
+      display: none;
+  }
+}
+
+.container input:checked ~ .radio {
+  border-color: $secondary-color;
+}
+
+%radio-text-styling {
+  position: absolute;
+  top: 15%;
+  left: 29%;
+  color: $form-controls-text;
+}
+
+#always:after {
+  content: "Always";
+  @extend %radio-text-styling;
+}
+
+#sometimes:after {
+  content: "Sometimes";
+  @extend %radio-text-styling;
+}
+
+#never:after {
+  content: "Never";
+  @extend %radio-text-styling;
+}
+
+.container input:checked ~ .radio:after {
+  display: block;
+}
+
+.container .radio:after {
+ 	top: 7px;
+	left: 7px;
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	background: black;
 }
 
 .container {
@@ -198,4 +297,60 @@ ul.breadcrumbs {
 
 .active, .accordion:hover {
     background-color: $dark-icon-color;
+}
+
+.form-elements {
+  margin-top: 100px;
+  h1 {
+    margin-bottom: 30px;
+  }
+}
+
+.user-info-left {
+  display: flex;
+  flex-direction: column;
+  width: 464px;
+}
+
+.user-info-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 565px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info-left .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    margin: 0;
+    color: $form-instruction-text;
+    font-size: 12px;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.radio-buttons {
+  width: 500px;
+}
+
+.instructions {
+  display: none;
+  margin: 0;
+  color: $form-instruction-text;
+  font-size: 12px;
+}
+
+.group-label {
+  margin-bottom: 10px;
 }
