@@ -67,7 +67,38 @@ const App = {
 
     var form = document.querySelector('form');
     form.addEventListener('submit', function(e) {
-      console.log(form.elements.fullname.value);
+      const formElements = form.elements;
+      const elements = [...form.elements];
+      const fullName = formElements.fullname.value;
+      const email = formElements.email.value;
+      const city = formElements.city.value;
+      const group = elements.find((element) => (
+        element.id === 'group' && element.checked
+      )).value;
+      const daysArr = elements.filter((element) => (
+        element.id === 'days' && element.checked
+      ));
+      const days = [];
+      for (let i = 0; i < daysArr.length; i++) {
+        days.push(daysArr[i].value);
+      }
+      const getDate = () => {
+        let today = new Date();
+        let date = today.getDate();
+        let month = today.getMonth() + 1;
+        const year = today.getFullYear();
+        const time = today.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+        if (date < 10) {
+          date = `0${date}`;
+        }
+        if (month < 10) {
+          month = `0${month}`;
+        }
+        today = `${date}/${month}/${year}`;
+        return `${today} ${time}`;
+      }
+
+      console.log(getDate());
       e.preventDefault();
     });
   },
