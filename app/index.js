@@ -122,6 +122,13 @@ const App = {
   addRow: function(name, email, city, group, days, date, icon) {
     const table = document.querySelector('.table');
     const newRow = document.createElement('div');
+    if (days === 'Sun, Mon, Tue, Wed, Thu, Fri, Sat') {
+      days = 'Every day';
+    } else if (days === 'Mon, Tue, Wed, Thu, Fri') {
+      days = 'Week days';
+    } else if (days === 'Sun, Sat') {
+      days = 'Weekends';
+    }
     newRow.classList.add('tr');
     const newCells = [
       this.createCell(name),
