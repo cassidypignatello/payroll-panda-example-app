@@ -347,7 +347,6 @@ ul.breadcrumbs {
   padding: 5px 18px;
   max-height: 0;
   transition: max-height 0.2s ease-out;
-  // height: auto;
   line-height: 1.6;
   display: none;
   outline: none;
@@ -392,6 +391,10 @@ ul.breadcrumbs {
   flex-direction: column;
 }
 
+.days {
+  margin-top: -28px;
+}
+
 .user-info-left .row {
   display: flex;
   justify-content: space-between;
@@ -421,4 +424,31 @@ ul.breadcrumbs {
 
 .group-label {
   margin-bottom: 10px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+  button {
+    padding: 9px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    width: 82px;
+  }
+}
+
+#cancel {
+  background-color: #ddd;
+  color: $primary-color;
+  margin-right: 12px;
+}
+
+#submit {
+  background-color: $secondary-color;
+  color: #fff;
 }
