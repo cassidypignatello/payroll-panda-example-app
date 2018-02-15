@@ -46,24 +46,32 @@ label {
   width: 120px;
   font-weight: normal; }
 
-.radio {
+.checkbox-container {
+  display: block;
+  position: relative;
+  width: 360px;
+  font-weight: normal; }
+
+.radio, .checkmark {
   display: inline-block;
   height: 25px;
   width: 25px;
-  border: 2px solid #dbdbdb;
-  border-radius: 50%;
-  cursor: pointer; }
-  .radio:hover {
+  border: 2px solid #dbdbdb; }
+  .radio:hover, .checkmark:hover {
     border-color: #33a00f; }
-  .radio:after {
+  .radio:after, .checkmark:after {
     content: "";
     position: absolute;
     display: none; }
 
-.container input:checked ~ .radio {
+.radio {
+  border-radius: 50%;
+  cursor: pointer; }
+
+.container input:checked ~ .radio, .container input:checked ~ .checkmark {
   border-color: #33a00f; }
 
-#always:after, #sometimes:after, #never:after {
+#always:after, #sometimes:after, #never:after, #sunday:after, #monday:after, #tuesday:after, #wednesday:after, #thursday:after, #friday:after, #saturday:after {
   position: absolute;
   top: 15%;
   left: 29%;
@@ -78,16 +86,56 @@ label {
 #never:after {
   content: "Never"; }
 
-.container input:checked ~ .radio:after {
+#sunday:after {
+  content: "Sun";
+  left: 46%; }
+
+#monday:after {
+  content: "Mon";
+  left: 46%; }
+
+#tuesday:after {
+  content: "Tue";
+  left: 46%; }
+
+#wednesday:after {
+  content: "Wed";
+  left: 46%; }
+
+#thursday:after {
+  content: "Thu";
+  left: 46%; }
+
+#friday:after {
+  content: "Fri";
+  left: 46%; }
+
+#saturday:after {
+  content: "Sat";
+  left: 46%; }
+
+.radio-container input:checked ~ .radio:after, .checkbox-container input:checked ~ .checkmark:after {
   display: block; }
 
-.container .radio:after {
+.radio-container .radio:after {
   top: 7px;
   left: 7px;
   width: 11px;
   height: 11px;
   border-radius: 50%;
   background: black; }
+
+.checkmark {
+  border-radius: 4px; }
+
+.checkbox-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 4px;
+  height: 8px;
+  border: solid #333;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg); }
 
 .container {
   position: relative;
