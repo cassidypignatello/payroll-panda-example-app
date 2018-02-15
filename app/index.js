@@ -50,21 +50,6 @@ const App = {
       }, true);
     });
 
-    const tableRows = document.querySelectorAll('div ~ .tr');
-    tableRows.forEach(function(row) {
-      row.addEventListener('mouseenter', function() {
-        const deleteIcon = this.lastChild.firstChild;
-        deleteIcon.style.display = 'block';
-        deleteIcon.addEventListener('click', () => {
-          this.remove();
-        });
-      });
-
-      row.addEventListener('mouseleave', function() {
-        this.lastChild.firstChild.style.display = 'none';
-      });
-    });
-
     var form = document.querySelector('form');
     form.addEventListener('submit', function(e) {
       const formElements = form.elements;
@@ -97,10 +82,45 @@ const App = {
         today = `${date}/${month}/${year}`;
         return `${today} ${time}`;
       }
+      const addRow = () => {
+        const table = document.querySelector('.table');
+        const newRow = document.createElement('div');
+        newRow.classList.add('tr');
+        const newCells = [
+          this.createCell(fullName),
+          this.createCell(email),
+          this.createCell(city),
+          this.createCell(group.charAt(0).toUpperCase() + group.slice(1)),
+          this.createCell(days.join(', ')),
+          this.createCell(getDate()),
+          this.createCell('icon')
+        ];
+        
+        const docFrag = document.createDocumentFragment();
+        for (var i = 0; i < newCells.length; i++) {
+          docFrag.appendChild(newCells[i]);
+        }
+        newRow.appendChild(docFrag);
+        table.appendChild(newRow);
+        const tableRows = document.querySelectorAll('div ~ .tr');
+        tableRows.forEach(function(row) {
+          row.addEventListener('mouseenter', function() {
+            const deleteIcon = this.lastChild.firstChild;
+            deleteIcon.style.display = 'block';
+            deleteIcon.addEventListener('click', () => {
+              this.remove();
+            });
+          });
 
-      console.log(getDate());
-      e.preventDefault();
-    });
+          row.addEventListener('mouseleave', function() {
+            this.lastChild.firstChild.style.display = 'none';
+          });
+        });
+      }
+      addRow();
+      // addRow(fullName, email, city, group);
+      // e.preventDefault();
+    }.bind(this));
   },
   buildList: function() {
     const bikers = [
@@ -116,27 +136,14 @@ const App = {
       const newRow = document.createElement('div');
       newRow.classList.add('tr');
 
-      function createCell(text) {
-        const newCell = document.createElement('div');
-        newCell.classList.add('td');
-        if (text === 'icon') {
-          const icon = document.createElement('i');
-          icon.classList.add('fa', 'fa-trash-o', 'fa-lg');
-          newCell.appendChild(icon);
-        } else {
-          newCell.appendChild(document.createTextNode(text));
-        }
-        return newCell;
-      }
-
       const newCells = [
-        createCell(biker.name),
-        createCell(biker.email),
-        createCell(biker.city),
-        createCell(biker.group),
-        createCell(biker.days),
-        createCell(`${biker.date} ${biker.time}`),
-        createCell('icon')
+        this.createCell(biker.name),
+        this.createCell(biker.email),
+        this.createCell(biker.city),
+        this.createCell(biker.group),
+        this.createCell(biker.days),
+        this.createCell(`${biker.date} ${biker.time}`),
+        this.createCell('icon')
       ];
 
       const docFrag = document.createDocumentFragment();
@@ -145,7 +152,19 @@ const App = {
       }
       newRow.appendChild(docFrag);
       table.appendChild(newRow);
-    });
+    }.bind(this));
+  },
+  createCell: function(text) {
+    const newCell = document.createElement('div');
+    newCell.classList.add('td');
+    if (text === 'icon') {
+      const icon = document.createElement('i');
+      icon.classList.add('fa', 'fa-trash-o', 'fa-lg');
+      newCell.appendChild(icon);
+    } else {
+      newCell.appendChild(document.createTextNode(text));
+    }
+    return newCell;
   }
 }
 
