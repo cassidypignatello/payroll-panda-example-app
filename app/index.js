@@ -1,6 +1,7 @@
 import './css/index.css';
 const App = {
   init: function() {
+    this.buildList();
     this.addListeners();
   },
   addListeners: function() {
@@ -40,15 +41,79 @@ const App = {
     inputs.forEach((input) => {
       input.addEventListener('focus', function() {
         this.nextElementSibling.style.display = 'block';
-        // this.nextElementSibling.style.marginBottom = '5px';
         this.style.marginBottom = 0;
       }, true);
 
       input.addEventListener('blur', function() {
         this.nextElementSibling.style.display = 'none';
-        // this.nextElementSibling.style.marginBottom = 0;
         this.style.marginBottom = '30px';
       }, true);
+    });
+
+    const tableRows = document.querySelectorAll('div ~ .tr');
+    tableRows.forEach(function(row) {
+      row.addEventListener('mouseenter', function() {
+        const deleteIcon = this.lastChild.firstChild;
+        deleteIcon.style.display = 'block';
+        deleteIcon.addEventListener('click', () => {
+          this.remove();
+        });
+      });
+
+      row.addEventListener('mouseleave', function() {
+        this.lastChild.firstChild.style.display = 'none';
+      });
+    });
+
+    var form = document.querySelector('form');
+    form.addEventListener('submit', function(e) {
+      console.log(form.elements.fullname.value);
+      e.preventDefault();
+    });
+  },
+  buildList: function() {
+    const bikers = [
+      {name: 'James Isaac Neutron', email: 'neutron@example.com', city: 'City', group: 'Always', days: 'Every day', date: '13/08/2018', time: '11:29AM'},
+      {name: 'Carl Wheezer', email: 'carl@example.com', city: 'City', group: 'Sometimes', days: 'Week days', date: '19/04/2019', time: '00:29AM'},
+      {name: 'Cindy Vortex', email: 'cindyvortex@example.com', city: 'City', group: 'Never', days: 'Weekends', date: '13/08/2018', time: '11:29AM'},
+      {name: 'Sheen Estevez', email: 'sheen@example.com', city: 'City', group: 'Sometimes', days: 'Mon, Wed, Fri', date: '19/04/2019', time: '00:29AM'},
+      {name: 'Libby Folfax', email: 'folfax2014@example.com', city: 'City', group: 'Sometimes', days: 'Mon, Tue, Wed', date: '13/08/2018', time: '11:29AM'},
+      {name: 'Nick Dean', email: 'nickd@example.com', city: 'City', group: 'Always', days: 'Fri, Sat', date: '13/08/2013', time: '11:29AM'}
+    ];
+    const table = document.querySelector('.table');
+    bikers.forEach(function(biker) {
+      const newRow = document.createElement('div');
+      newRow.classList.add('tr');
+
+      function createCell(text) {
+        const newCell = document.createElement('div');
+        newCell.classList.add('td');
+        if (text === 'icon') {
+          const icon = document.createElement('i');
+          icon.classList.add('fa', 'fa-trash-o', 'fa-lg');
+          newCell.appendChild(icon);
+        } else {
+          newCell.appendChild(document.createTextNode(text));
+        }
+        return newCell;
+      }
+
+      const newCells = [
+        createCell(biker.name),
+        createCell(biker.email),
+        createCell(biker.city),
+        createCell(biker.group),
+        createCell(biker.days),
+        createCell(`${biker.date} ${biker.time}`),
+        createCell('icon')
+      ];
+
+      const docFrag = document.createDocumentFragment();
+      for (var i = 0; i < newCells.length; i++) {
+        docFrag.appendChild(newCells[i]);
+      }
+      newRow.appendChild(docFrag);
+      table.appendChild(newRow);
     });
   }
 }
